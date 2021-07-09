@@ -21,8 +21,8 @@ class UserRepository {
 }
 
 void main() {
-  FirebaseDatabase firebaseDatabase;
-  UserRepository userRepository;
+  late FirebaseDatabase firebaseDatabase;
+  late UserRepository userRepository;
   // Put fake data
   const userId = 'userId';
   const userName = 'Elon musk';

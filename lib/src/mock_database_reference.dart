@@ -11,7 +11,7 @@ class MockDatabaseReference extends Mock implements DatabaseReference {
   static var _persitedData = <String, dynamic>{};
   var _volatileData = <String, dynamic>{};
   MockDatabaseReference();
-  MockDatabaseReference._(nodePath, [this._volatileData]) {
+  MockDatabaseReference._(nodePath, this._volatileData) {
     _nodePath += nodePath;
   }
   // TODO implement real [onchange] (may yield each change).
@@ -49,10 +49,10 @@ class MockDatabaseReference extends Mock implements DatabaseReference {
 
   @override
   // ignore: missing_return
-  Future<void> set(dynamic value, {dynamic priority}) {
+  Future<void> set(dynamic value, {dynamic priority}) async {
     if (_nodePath == '/') {
       _data = value;
-      return null;
+      return;
     }
     var nodePathWithoutSlashesAtEndAndStart =
         _nodePath.substring(1, _nodePath.length - 1);
@@ -88,10 +88,10 @@ class MockDatabaseReference extends Mock implements DatabaseReference {
   }
 
   Map<String, dynamic> _buildNewNodesTree({
-    @required dynamic data,
-    @required List<String> nodesList,
-    @required int nodeIndex,
-    @required value,
+    required dynamic data,
+    required List<String> nodesList,
+    required int nodeIndex,
+    required value,
   }) {
     var nextNodeIndex = nodeIndex + 1;
     if (nodeIndex + 1 < nodesList.length) {
@@ -107,9 +107,9 @@ class MockDatabaseReference extends Mock implements DatabaseReference {
   }
 
   _getNextNodeData({
-    @required dynamic data,
-    @required List<String> nodesList,
-    @required _Int nodeIndex,
+    required dynamic data,
+    required List<String> nodesList,
+    required _Int nodeIndex,
   }) {
     if (nodesList.length <= nodeIndex.value ||
         !(data[nodesList[nodeIndex.value]] is Map)) {

@@ -9,7 +9,7 @@ homepage: https://github.com/sitatec/firebase_database_mocks.git
 issue_tracker: https://github.com/sitatec/firebase_database_mocks/issues
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.13.0 <3.0.0"
 
 dependencies:
   flutter:
